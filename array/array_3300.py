@@ -69,6 +69,7 @@ print(ans)
 做法 : 用 // 與 % 做計算
 複雜度 : O(n*d) #d為每個數字string長度
 """
+nums = [1, 2, 3, 5]
 min_num = 10
 nums_new = []
 for i in nums:

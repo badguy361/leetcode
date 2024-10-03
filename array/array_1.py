@@ -14,10 +14,12 @@ Example 1:
 Input: nums = [2,7,11,15], target = 9
 Output: [0,1]
 Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+
 Example 2:
 
 Input: nums = [3,2,4], target = 6
 Output: [1,2]
+
 Example 3:
 
 Input: nums = [3,3], target = 6
@@ -36,8 +38,13 @@ Follow-up: Can you come up with an algorithm that is less than O(n2) time comple
 
 """
 
-nums = [1,2,3,5]
-target = 9
+# solution 1:
+"""
+做法 : 遍歷所有可能的組合
+複雜度 : O(n^2)
+"""
+nums = [4,3,3]
+target = 6
 ans = {}
 index1 = 0
 for i in nums:
@@ -49,3 +56,17 @@ for i in nums:
         index2 += 1
     index1 += 1
 print(ans)
+
+# solution 2:
+"""
+做法 : 用 hashmap 紀錄每個數字的 index
+複雜度 : O(n)
+"""
+nums = [4,3,3]
+target = 6
+pair = {}
+for index, num in enumerate(nums):
+    obj = target - num
+    if obj in pair:
+        print([pair[obj],index])
+    pair[num] = index
