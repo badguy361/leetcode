@@ -48,8 +48,13 @@ Constraints:
 
 """
 
-nums = [1,2,3,5]
-nums = list(map(str,nums))
+# solution 1(faster):
+"""
+做法 : 轉string後遍歷相加
+複雜度 : O(n*d) #d為每個數字string長度
+"""
+nums = [1, 2, 3, 5]
+nums = list(map(str, nums))
 new_nums = []
 for i in nums:
     total = 0
@@ -57,4 +62,24 @@ for i in nums:
         total += int(j)
     new_nums.append(total)
 ans = min(new_nums)
+print(ans)
+
+# solution 2:
+"""
+做法 : 用 // 與 % 做計算
+複雜度 : O(n*d) #d為每個數字string長度
+"""
+min_num = 10
+nums_new = []
+for i in nums:
+    total = 0
+    tmp1 = i
+    tmp2 = 0
+    while tmp1 >= min_num:
+        tmp2 = tmp1 % 10
+        tmp1 = tmp1 // 10
+        total += tmp2
+    total += tmp1
+    nums_new.append(total)
+ans = min(nums_new)
 print(ans)
