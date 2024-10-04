@@ -44,21 +44,38 @@ skill.length is even.
 做法 : 遍歷所有可能的組合
 複雜度 : O(n^2) (用list或array做查詢的複雜度會是O(n)，HashMap的複雜度會是O(1))
 """
-import numpy as np
-skill =[2,3,4,2,5,5]
-target = sum(skill)/(len(skill)/2)
-obj_set = np.array([])
-value = int(0)
-for ski in skill:
-    obj = target - ski
-    if obj in obj_set:
-        tmp = obj * ski
-        value += tmp
-        obj_set = np.delete(obj_set,np.where(obj_set == obj)[0][0])
-    else:
-        obj_set = np.append(obj_set,ski)
+# import numpy as np
+# skill =[2,3,4,2,5,5]
+# target = sum(skill)/(len(skill)/2)
+# obj_set = np.array([])
+# value = int(0)
+# for ski in skill:
+#     obj = target - ski
+#     if obj in obj_set:
+#         tmp = obj * ski
+#         value += tmp
+#         obj_set = np.delete(obj_set,np.where(obj_set == obj)[0][0])
+#     else:
+#         obj_set = np.append(obj_set,ski)
 
-if len(obj_set) != 0:
-    print("value: -1")
-else:
-    print("value:",value)
+# if len(obj_set) != 0:
+#     print("value: -1")
+# else:
+#     print("value:",value)
+
+# solution 2:
+"""
+做法 : 排序後遍歷
+複雜度 : O(nlogn)
+"""
+skill = [1,1,2,3]
+skill.sort() # python內建的Timsort複雜度是O(nlogn)
+value = 0
+target = sum(skill)/(len(skill)/2)
+for i in range(len(skill)//2):
+    if skill[i] + skill[-i-1] != target:
+        print(-1)
+    else:
+        tmp = skill[i] * skill[-i-1]
+        value += tmp
+
