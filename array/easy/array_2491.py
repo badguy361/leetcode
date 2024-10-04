@@ -42,7 +42,7 @@ skill.length is even.
 # solution 1:
 """
 做法 : 遍歷所有可能的組合
-複雜度 : O(n^2)
+複雜度 : O(n^2) (用list或array做查詢的複雜度會是O(n)，HashMap的複雜度會是O(1))
 """
 import numpy as np
 skill =[2,3,4,2,5,5]
