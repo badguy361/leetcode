@@ -3,7 +3,8 @@
 
 Given the roots of two binary trees p and q, write a function to check if they are the same or not.
 
-Two binary trees are considered the same if they are structurally identical, and the nodes have the same value.
+Two binary trees are considered the same if they are structurally identical, and the nodes have the
+same value.
 
 Example 1:
 
@@ -29,7 +30,7 @@ Output: false
 3. 如果兩個節點的值不相等，則返回False
 4. 遞迴比較兩個節點的左子樹和右子樹
 """
-from typing import Optional, List
+from typing import Optional
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -60,4 +61,3 @@ root_q.right = TreeNode(3)
 solution = Solution()
 output = solution.isSameTree(root_p,root_q)
 print(output)
-
