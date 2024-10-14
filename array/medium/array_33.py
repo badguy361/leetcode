@@ -2,9 +2,13 @@
 33. Search in Rotated Sorted Array
 There is an integer array nums sorted in ascending order (with distinct values).
 
-Prior to being passed to your function, nums is possibly rotated at an unknown pivot index k (1 <= k < nums.length) such that the resulting array is [nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]] (0-indexed). For example, [0,1,2,4,5,6,7] might be rotated at pivot index 3 and become [4,5,6,7,0,1,2].
+Prior to being passed to your function, nums is possibly rotated at an unknown pivot index k 
+(1 <= k < nums.length) such that the resulting array is [nums[k], nums[k+1], ..., nums[n-1], 
+nums[0], nums[1], ..., nums[k-1]] (0-indexed). For example, [0,1,2,4,5,6,7] might be rotated 
+at pivot index 3 and become [4,5,6,7,0,1,2].
 
-Given the array nums after the possible rotation and an integer target, return the index of target if it is in nums, or -1 if it is not in nums.
+Given the array nums after the possible rotation and an integer target, return the index of 
+target if it is in nums, or -1 if it is not in nums.
 
 You must write an algorithm with O(log n) runtime complexity.
 
@@ -65,7 +69,6 @@ while low <= height:
     if nums[mid] == target:
         print('object',mid)
         break
-    
     if nums[low] <= nums[mid]: # 判斷左半邊是否為遞增
         if nums[low] <= target <= nums[mid]: # 判斷target是否在左半邊
             height = mid - 1
@@ -77,5 +80,3 @@ while low <= height:
         else:
             height = mid - 1
 print(-1)
-
-

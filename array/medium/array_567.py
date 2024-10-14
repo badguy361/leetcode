@@ -61,4 +61,3 @@ for i in range(len(s2)-window+1):
     else:
         flag = False
 print(flag)
-

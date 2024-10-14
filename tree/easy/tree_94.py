@@ -56,9 +56,6 @@ class Solution:
             result.append(current.val)
             current = current.right
         return result
-            
-
-# root = [1,None,2,3]
 
 # 建立二元樹節點
 root = [1,2,3,4,5,None,8,None,None,6,7,9]
