@@ -70,7 +70,9 @@ disable=W0105,
         W0621,
         C0115,
         C0116,
-        C0103
+        C0103,
+        R0903,
+        R0801
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option
@@ -484,6 +486,7 @@ max-statements=50
 # Minimum number of public methods for a class (see R0903).
 min-public-methods=2
 
+overgeneral-exceptions=builtins.BaseException
 
 [IMPORTS]
 

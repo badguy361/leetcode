@@ -54,7 +54,7 @@ while low <= height:
     if nums[mid] == target:
         print(mid)
         break
-    elif nums[mid] <= target:
+    if nums[mid] <= target:
         flag = "low"
         low = mid + 1
     elif nums[mid] >= target:

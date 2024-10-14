@@ -58,6 +58,5 @@ for i in range(len(s2)-window+1):
     if s2_table == s1_table:
         flag = True
         break
-    else:
-        flag = False
+    flag = False
 print(flag)
