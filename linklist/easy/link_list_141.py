@@ -33,6 +33,10 @@ The number of the nodes in the list is in the range [0, 104].
 pos is -1 or a valid index in the linked-list.
 """
 # solution 1
+"""
+做法: 使用快慢指針，如果快指針追上慢指針，則有環
+複雜度: O(n)
+"""
 from typing import Optional
 class ListNode:
     def __init__(self, val=0, next=None):
