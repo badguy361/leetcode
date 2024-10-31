@@ -35,26 +35,41 @@ from typing import Optional
 做法：將stack反序後，重新建立linked list
 時間複雜度：O(n)
 """
+# class Solution:
+#     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+#         index = head
+#         stack = []
+#         while index:
+#             if index.next:
+#                 stack.append(index.val)
+#             index = index.next
+
+#         head = None
+
+#         for sta in stack[::-1]:
+#             if not head:
+#                 head = ListNode(sta)
+#                 current = head
+#             else:
+#                 current.next = ListNode(sta)
+#                 current = current.next
+
+#         return head
+
+# solution2: two pointer
+"""
+做法：使用兩個指針，一個指針指向下一個節點，另一個指針迭代出答案
+時間複雜度：O(n)
+"""
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        index = head
-        stack = []
-        while index:
-            if index.next:
-                stack.append(index.val)
-            index = index.next
-
-        head = None
-
-        for sta in stack[::-1]:
-            if not head:
-                head = ListNode(sta)
-                current = head
-            else:
-                current.next = ListNode(sta)
-                current = current.next
-
-        return head
+        ans = None
+        while head:
+            next_node = head.next
+            head.next = ans
+            ans = head
+            head = next_node
+        return ans
 
 head = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))
 head = Solution().reverseList(head)
