@@ -7,6 +7,7 @@
 # linklist
 1. fast and slow pointer
 2. two pointer
+3. dummy node
 
 # tree
 1. recursive
