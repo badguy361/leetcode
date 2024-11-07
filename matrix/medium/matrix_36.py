@@ -51,55 +51,90 @@ board[i][j] is a digit or '.'.
 做法：超慢解法
 """
 from typing import List
+# class Solution:
+#     def isValidSudoku(self, board: List[List[str]]) -> bool:
+#         def trans(row_or_column):
+#             flag = 0
+#             for i, rc in enumerate(row_or_column):
+#                 if rc == ".":
+#                     row_or_column[i] = "." + str(flag)
+#                     flag += 1
+#                 else:
+#                     try:
+#                         row_or_column[i] = int(row_or_column[i])
+#                     except ValueError:
+#                         pass
+#             return row_or_column
+
+#         for i in range(9):
+#             row = trans(board[i][:])
+#             if len(set(row))!=9:
+#                 return False
+
+#         for j in range(9):
+#             column = [row[j] for row in board]
+#             column = trans(column)
+#             if len(set(column))!=9:
+#                 return False
+
+#         k = 0
+#         while k < 9:
+#             n = 0
+#             while n<9:
+#                 check = {"1":False,"2":False,"3":False,"4":False,"5":False,"6":False,"7":False,
+#                        "8":False,"9":False}
+#                 for m in range(3):
+#                     if board[k][m+n].isdigit():
+#                         if not check[str(board[k][m+n])]:
+#                             check[str(board[k][m+n])] = True
+#                         elif check[str(board[k][m+n])]:
+#                             return False
+#                     if board[k+1][m+n].isdigit():
+#                         if not check[str(board[k+1][m+n])]:
+#                             check[str(board[k+1][m+n])] = True
+#                         elif check[str(board[k+1][m+n])]:
+#                             return False
+#                     if board[k+2][m+n].isdigit():
+#                         if not check[str(board[k+2][m+n])]:
+#                             check[str(board[k+2][m+n])] = True
+#                         elif check[str(board[k+2][m+n])]:
+#                             return False
+#                 n+=3
+#             k += 3
+#         return True
+
+# solution 2
+"""
+做法：優化解法，抽象相同邏輯，hash table
+"""
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
-        def trans(row_or_column):
-            flag = 0
-            for i, rc in enumerate(row_or_column):
-                if rc == ".":
-                    row_or_column[i] = "." + str(flag)
-                    flag += 1
-                else:
-                    try:
-                        row_or_column[i] = int(row_or_column[i])
-                    except ValueError:
-                        pass
-            return row_or_column
+        def check_repeat(data):
+            check = set()
+            for da in data:
+                if da.isdigit():
+                    if da in check:
+                        return False
+                    check.add(da)
+            return True
 
-        for i in range(9):
-            row = trans(board[i][:])
-            if len(set(row))!=9:
+        row = [i for i in board]
+        for ro in row:
+            response_row = check_repeat(ro)
+            if not response_row:
                 return False
 
         for j in range(9):
-            column = [row[j] for row in board]
-            column = trans(column)
-            if len(set(column))!=9:
+            col = [i[j] for i in board]
+            response_col = check_repeat(col)
+            if not response_col:
                 return False
 
-        k = 0
-        while k < 9:
-            n = 0
-            while n<9:
-                check = {"1":False,"2":False,"3":False,"4":False,"5":False,"6":False,"7":False,
-                       "8":False,"9":False}
-                for m in range(3):
-                    if board[k][m+n].isdigit():
-                        if not check[str(board[k][m+n])]:
-                            check[str(board[k][m+n])] = True
-                        elif check[str(board[k][m+n])]:
-                            return False
-                    if board[k+1][m+n].isdigit():
-                        if not check[str(board[k+1][m+n])]:
-                            check[str(board[k+1][m+n])] = True
-                        elif check[str(board[k+1][m+n])]:
-                            return False
-                    if board[k+2][m+n].isdigit():
-                        if not check[str(board[k+2][m+n])]:
-                            check[str(board[k+2][m+n])] = True
-                        elif check[str(board[k+2][m+n])]:
-                            return False
-                n+=3
-            k += 3
+        for k in range(0,9,3):
+            for m in range(0,9,3):
+                box = [board[ro][co] for ro in range(k,k+3) for co in range(m,m+3)]
+                response_box = check_repeat(box)
+                if not response_box:
+                    return False
+
         return True
-    
