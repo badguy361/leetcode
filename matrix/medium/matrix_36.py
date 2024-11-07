@@ -118,8 +118,7 @@ class Solution:
                     check.add(da)
             return True
 
-        row = [i for i in board]
-        for ro in row:
+        for ro in board:
             response_row = check_repeat(ro)
             if not response_row:
                 return False
