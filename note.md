@@ -15,3 +15,7 @@
 3. inorder traversal
 4. postorder traversal
 5. layer traversal
+
+# string
+1. heapq(priority queue)
+2. Counter
