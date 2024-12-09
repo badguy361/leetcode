@@ -25,7 +25,8 @@ Explanation: Note that there is no trailing slash after the last directory.
 Example 2:
 Input: path = "/../"
 Output: "/"
-Explanation: Going one level up from the root directory is a no-op, as the root level is the highest level you can go.
+Explanation: Going one level up from the root directory is a no-op, as the root level is 
+the highest level you can go.
 
 Example 3:
 Input: path = "/home//foo/"
