@@ -29,3 +29,4 @@
 3. stack 71. path[:i] + path[i+1:]
 4. stack 20. bracket map: {')': '(', ']': '[', '}': '{'} bracket_map.get(c) for c in s
 5. string 767. statics = Counter(s) for key, number in statics.items()
+6. heap 215. nums.sort(key=lambda x:-x)
