@@ -22,3 +22,10 @@
 
 # matrix
 1. simulation 3239
+
+# skill
+1. stack 946. popleft: pop(0)
+2. stack 227. num = num * 10 + int(c)
+3. stack 71. path[:i] + path[i+1:]
+4. stack 20. bracket map: {')': '(', ']': '[', '}': '{'} bracket_map.get(c) for c in s
+5. string 767. statics = Counter(s) for key, number in statics.items()
