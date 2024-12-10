@@ -24,9 +24,10 @@
 1. simulation 3239
 
 # skill
-1. stack 946. popleft: pop(0)
-2. stack 227. num = num * 10 + int(c)
-3. stack 71. path[:i] + path[i+1:]
-4. stack 20. bracket map: {')': '(', ']': '[', '}': '{'} bracket_map.get(c) for c in s
-5. string 767. statics = Counter(s) for key, number in statics.items()
-6. heap 215. nums.sort(key=lambda x:-x)
+1. stack 946. pop第一個元素 popleft: pop(0)
+2. stack 227. 進位邏輯 num = num * 10 + int(c)
+3. stack 71. 刪除path中第i個元素 path[:i] + path[i+1:]
+4. stack 20. 字典取值 bracket map: {')': '(', ']': '[', '}': '{'} bracket_map.get(c) for c in s
+5. string 767. 統計頻率 statics = Counter(s) for key, number in statics.items()
+6. heap 215. sort 降序 nums.sort(key=lambda x:-x)
+7. heap 347. haap按照第一個元素排序 max_heap=[(-freq,num) for num,freq in Counter(nums).items()] heapq.heapify(max_heap)
