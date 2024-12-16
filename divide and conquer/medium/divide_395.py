@@ -88,10 +88,18 @@ class Solution1:
 """
 class Solution2:
     def longestSubstring(self, s: str, k: int) -> int:
+        # 如果字串長度小於k，無法滿足條件
         if len(s) < k:
             return 0
-        statics = Counter(s)
-        for _,value in statics.items():
-            if value < k:
-                return max(self.longestSubstring(s[:i],k) for i in range(len(s)))
+
+        # 計算每個字符的頻率
+        count = Counter(s)
+
+        # 找出頻率小於k的字符
+        for char in count:
+            if count[char] < k:
+                # 用這個字符分割字串，並遞迴處理各子串
+                return max(self.longestSubstring(sub, k) for sub in s.split(char))
+
+        # 如果沒有字符頻率小於k的，整個字串符合條件
         return len(s)
