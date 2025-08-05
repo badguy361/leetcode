@@ -43,7 +43,8 @@ Follow-up: Can you come up with an algorithm that is less than O(n2) time comple
 # solution 1:
 """
 做法 : 遍歷所有可能的組合
-複雜度 : O(n^2)
+時間複雜度 : O(n^2)
+空間複雜度 : O(1)
 """
 nums = [4,3,3]
 target = 6
@@ -62,7 +63,8 @@ print(ans)
 # solution 2:
 """
 做法 : 用 hashmap 紀錄每個數字的 index
-複雜度 : O(n)
+時間複雜度 : O(n)
+空間複雜度 : O(n) dict存了n個key-value pair
 """
 nums = [4,3,3]
 target = 6

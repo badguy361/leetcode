@@ -32,3 +32,4 @@
 6. heap 215. sort 降序 nums.sort(key=lambda x:-x)
 7. heap 347. haap按照第一個元素排序 max_heap=[(-freq,num) for num,freq in Counter(nums).items()] heapq.heapify(max_heap)
 8. string 395. all & any 用法 all(value >= k for value in char_index.values()):
+9. string 438 刪除字典元素 del s_counter['char']
