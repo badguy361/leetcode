@@ -68,11 +68,11 @@ nums.sort()
 """
 ans=[]
 for i,num in enumerate(nums):
-    if i > 0 and nums[i] == nums[i - 1]:
+    if i > 0 and num == nums[i - 1]:
         continue
     left = i+1
     right = len(nums)-1
-    while(right>left):
+    while right > left:
         total = num+nums[left]+nums[right]
         if total>0:
             right-=1
@@ -80,9 +80,9 @@ for i,num in enumerate(nums):
             left+=1
         else:
             ans.append([num,nums[left],nums[right]])
-            while(right>left and nums[right]==nums[right-1]):
+            while right>left and nums[right]==nums[right-1]:
                 right-=1
-            while(right>left and nums[left]==nums[left+1]):
+            while right>left and nums[left]==nums[left+1]:
                 left+=1
             right-=1
             left+=1
