@@ -29,6 +29,7 @@ nums[i] is either 0, 1, or 2.
 nums = [2,0,2,1,1,0]
 
 from typing import List
+# solution 1
 """
 做法: quickSort
 複雜度: O(nlogn)
@@ -49,3 +50,34 @@ def sortColors(nums: List[int]) -> None:
     # 使用 nums[:] = ... 進行切片賦值： 這種方法會用新列表的內容替換原始列表的所有元素，
     # 從而達到原地修改的效果。這在技術上仍然會創建一個新的列表作為右側的值，但它會將該新列表的內容「複製」回原始列表的記憶體位置。
     nums[:] = quickSort(nums)
+
+# solution 2
+"""
+做法: mergeSort
+複雜度: O(nlogn)
+"""
+def divide(nums: List[int]) -> List[int]:
+    if len(nums) <= 1:
+        return nums
+    mid = len(nums) // 2
+    left = divide(nums[:mid])
+    right = divide(nums[mid:])
+
+    return merge(left, right)
+
+def merge(left: List[int], right: List[int]) -> List[int]:
+    sort_array = []
+    i = j = 0
+    while i < len(left) and j < len(right):
+        if left[i] < right[j]:
+            sort_array.append(left[i])
+            i += 1
+        else:
+            sort_array.append(right[j])
+            j += 1
+    sort_array.extend(left[i:])
+    sort_array.extend(right[j:])
+
+    return sort_array
+
+nums[:] = divide(nums)
