@@ -3,6 +3,7 @@
 2. sliding window 567
 3. binary search
 4. hash table 3217
+5. fast and slow pointer 80
 
 # linklist
 1. fast and slow pointer 141
