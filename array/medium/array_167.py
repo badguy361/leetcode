@@ -51,3 +51,21 @@ for i, num in enumerate(numbers):
     if obj in hashmap:
         print([hashmap[obj]+1, i+1])
     hashmap[num] = i
+
+# solution2
+"""
+做法:
+雙指針
+時間複雜度: O(n)
+空間複雜度: O(1)
+"""
+left = 0
+right = len(numbers) - 1
+while right > left:
+    remain_sum = numbers[left] + numbers[right]
+    if remain_sum < target:
+        left += 1
+    elif remain_sum > target:
+        right -= 1
+    else:
+        print([left+1, right+1])
