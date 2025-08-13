@@ -39,17 +39,14 @@ nums = [1,1,1,2,2,3]
 # solution 1
 """
 做法: 
-1. 用dict記錄數字出現次數
-2. 刪除重複
-複雜度: O(n)
+1. 用快慢指針
+時間複雜度: O(n)
+空間複雜度: O(1)
 """
 slow = 2
 for fast in range(2,len(nums)):
-    print("fast", fast)
-    print("slow", slow)
-    print("nums[fast]", nums[fast])
-    print("nums[slow-2]", nums[slow-2])
     if nums[fast] != nums[slow-2]:
         nums[slow] = nums[fast]
         slow += 1
 print(nums)
+print(slow)
