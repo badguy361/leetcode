@@ -42,13 +42,11 @@ ans = 0
 while right < len(s):
     nums_set = set(s[left:right])
     if s[right] not in nums_set:
-        right += 1
-        temp_ans += 1
+        temp_ans = right - left + 1
         ans = max(ans,temp_ans)
+        right += 1
     else:
         left += 1
-        temp_ans = right - left + 1
-    ans = max(ans, temp_ans)
 print(ans)
 
 # solution 2
