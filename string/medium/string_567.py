@@ -34,7 +34,25 @@ s2 = "eidbaooo"
 # s1 = "abc"
 # s2 = "cba"
 
-# solution 1:
+# soluton 1
+"""
+做法: 使用window的概念，遍歷s2，並使用s1_table來比對是否包含s1的組成元素
+複雜度: O(n*k)
+"""
+from collections import Counter
+left = 0
+right = left + len(s1)
+count_s1 = Counter(ch for ch in s1 if ch.isalpha())
+while right <= len(s2):
+    count_s2_window = Counter(ch for ch in s2[left:right] if ch.isalpha())
+    if count_s2_window == count_s1:
+        print(True)
+        break
+    left += 1
+    right = left + len(s1)
+print(False)
+
+# solution 2:
 """
 做法: 使用window的概念，遍歷s2，並使用s1_table來比對是否包含s1的組成元素
 複雜度: O(n)
