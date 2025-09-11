@@ -37,7 +37,8 @@ s2 = "eidbaooo"
 # soluton 1
 """
 做法: 使用window的概念，遍歷s2，並使用s1_table來比對是否包含s1的組成元素
-複雜度: O(n*k)
+時間複雜度: O(n*k)
+空間複雜度: O(26)
 """
 from collections import Counter
 left = 0
@@ -55,7 +56,8 @@ print(False)
 # solution 2:
 """
 做法: 使用window的概念，遍歷s2，並使用s1_table來比對是否包含s1的組成元素
-複雜度: O(n)
+時間複雜度: O(n)
+空間複雜度: O(26)
 """
 def count_char(string, table):
     for char in string:
