@@ -47,7 +47,7 @@ At most 3 * 104 calls will be made to push, pop, top, and getMin.
 
 #     def getMin(self) -> int:
 #         return min(self.stack)
-        
+
 # solution 2
 """
 做法: push時同時push最小值
@@ -67,17 +67,13 @@ class MinStack:
             self.minStack.append(min(val, self.minStack[-1]))
         else:
             self.minStack.append(val)
-        return
 
     def pop(self) -> None:
         self.stack.pop()
         self.minStack.pop()
-        return
 
     def top(self) -> int:
         return self.stack[-1]
 
     def getMin(self) -> int:
         return self.minStack[-1]
-
-        
