@@ -43,12 +43,15 @@ Output: 1
 """
 # solution 1
 """
-做法: 
+做法: monotonic stack
 複雜度:
 - 時間複雜度: O(nlogn)
 - 空間複雜度: O(n)
 """
-cars = sorted(zip(position, speed), reverse=True)  
+target = 12
+position = [10,8,0,5,3]
+speed = [2,4,1,1,3]
+cars = sorted(zip(position, speed), reverse=True)
 fleets = 0
 min_time = 0
 

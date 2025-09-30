@@ -44,19 +44,19 @@ print(-1)
 - 空間複雜度: O(logn)
     每次呼叫函式都要壓一層 stack frame，所以會額外用到遞迴深度的記憶體
 """
+from typing import List
 def search(nums: List[int], target: int) -> int:
     def binarySearch(left: int, right: int) -> int:
         if left > right:
             return -1
-        
+
         mid = (left + right) // 2
         if nums[mid] == target:
             return mid
-        elif nums[mid] < target:
+        if nums[mid] < target:
             return binarySearch(mid + 1, right)
-        else:
-            return binarySearch(left, mid - 1)
-    
+        return binarySearch(left, mid - 1)
+
     return binarySearch(0, len(nums) - 1)
 
 print(search(nums, target))

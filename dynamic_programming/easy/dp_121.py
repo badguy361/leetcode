@@ -24,7 +24,7 @@ Constraints:
 1 <= prices.length <= 10^5
 0 <= prices[i] <= 10^4
 """
-prices = [7,1,5,3,6,4]
+
 # solution 1
 """
 暴力解法
@@ -32,6 +32,7 @@ prices = [7,1,5,3,6,4]
 - 時間複雜度: O(n^2)
 - 空間複雜度: O(1)
 """
+prices = [7,1,5,3,6,4]
 max_profit = 0
 for i in range(len(prices)):
     for j in range(i+1, len(prices)):
