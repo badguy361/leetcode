@@ -36,32 +36,62 @@ class ListNode:
 3. 返回ans
 時間複雜度：O(n)
 """
+# class Solution:
+#     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+#         add = 0
+#         ans = None
+#         while (l1 is not None) or (l2 is not None):
+#             if l1 is not None:
+#                 l1_val = l1.val
+#                 l1 = l1.next
+#             else:
+#                 l1_val = 0
+
+#             if l2 is not None:
+#                 l2_val = l2.val
+#                 l2 = l2.next
+#             else:
+#                 l2_val = 0
+
+#             sum_num = add + l1_val + l2_val
+#             add = sum_num // 10 # 10位數
+#             tmp = ListNode(sum_num % 10) # 個位數
+#             if ans is None: # 第一個節點
+#                 ans = tmp
+#                 cur = ans
+#             else:
+#                 cur.next = tmp
+#                 cur = cur.next
+#         if add != 0: # 最後一個節點(若還有進位)
+#             cur.next = ListNode(add)
+#         return ans
+
+# solution 2
+"""
+做法:
+1. 使用dummy node來幫助我們建立新的linked list
+2. 使用carry來存儲進位
+3. 遍歷l1和l2，將每個節點的值相加，並將結果存入dummy node中
+4. 返回dummy node的next
+時間複雜度：O(n)
+空間複雜度：O(1)
+"""
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        add = 0
-        ans = None
-        while (l1 is not None) or (l2 is not None):
-            if l1 is not None:
-                l1_val = l1.val
-                l1 = l1.next
-            else:
-                l1_val = 0
+        dummy = ListNode(0)
+        curr = dummy
+        carry = 0
+        while l1 or l2 or carry:
+            val1 = l1.val if l1 else 0
+            val2 = l2.val if l2 else 0
+            total = val1 + val2 + carry
 
-            if l2 is not None:
-                l2_val = l2.val
-                l2 = l2.next
-            else:
-                l2_val = 0
+            first = total % 10
+            carry = total // 10
+            curr.next = ListNode(first)
+            curr = curr.next
 
-            sum_num = add + l1_val + l2_val
-            add = sum_num // 10 # 10位數
-            tmp = ListNode(sum_num % 10) # 個位數
-            if ans is None: # 第一個節點
-                ans = tmp
-                cur = ans
-            else:
-                cur.next = tmp
-                cur = cur.next
-        if add != 0: # 最後一個節點(若還有進位)
-            cur.next = ListNode(add)
-        return ans
+            l1 = l1.next if l1 else None
+            l2 = l2.next if l2 else None
+
+        return dummy.next
