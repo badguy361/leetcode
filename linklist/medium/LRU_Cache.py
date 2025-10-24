@@ -49,26 +49,57 @@ At most 2 * 105 calls will be made to get and put.
 - 空間複雜度: O(n)
 """
 
+# class LRUCache:
+
+#     def __init__(self, capacity: int):
+#         self.capacity = capacity
+#         self.cache = {}
+#         self.order = []
+
+#     def get(self, key: int) -> int:
+#         if key in self.cache:
+#             self.order.remove(key) # O(n)
+#             self.order.append(key)
+#             return self.cache[key]
+#         return -1
+
+#     def put(self, key: int, value: int) -> None:
+#         if key in self.cache:
+#             self.order.remove(key)
+#         else:
+#             if len(self.cache) >= self.capacity:
+#                 oldest = self.order.pop(0)
+#                 del self.cache[oldest]
+#         self.cache[key] = value
+#         self.order.append(key)
+
+# solution 2
+"""
+做法: 
+HashMap: { key → 對應的節點(Node) }
+
+Doubly Linked List: [head](最新使用) <-> [node1] <-> [node2] ... <-> [tail](最舊使用)
+複雜度:
+- 時間複雜度: O(1)
+- 空間複雜度: O(1)
+"""
+from collections import OrderedDict
 class LRUCache:
 
     def __init__(self, capacity: int):
         self.capacity = capacity
-        self.cache = {}
-        self.order = []
+        self.cache = OrderedDict()
 
     def get(self, key: int) -> int:
         if key in self.cache:
-            self.order.remove(key) # O(n)
-            self.order.append(key)
+            self.cache.move_to_end(key) # O(1)
             return self.cache[key]
         return -1
 
     def put(self, key: int, value: int) -> None:
         if key in self.cache:
-            self.order.remove(key)
+            self.cache.move_to_end(key)
         else:
             if len(self.cache) >= self.capacity:
-                oldest = self.order.pop(0)
-                del self.cache[oldest]
+                self.cache.popitem(last=False) #移除最舊的
         self.cache[key] = value
-        self.order.append(key)
